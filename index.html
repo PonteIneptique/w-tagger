@@ -9,12 +9,22 @@
   <body>
    <div class="container">
       <div class="row">
-        <div class="col-lg-12">
+        <div class="col">
           <h4>Word Taggize</h4>
-          <textarea class="form-input" style="width:100%; heighty:300px;"></textarea>
-          </div>
+          <a class="btn btn-primary" id="transform">Wrap into word tags</a>
+          <textarea id="input" class="form-control" style="width:100%; heighty:300px;"></textarea>
+        </div>
       </div>
-      </div>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+   </div>
+   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+   <script type="text/javascript">
+    $("#transform").on("click", function(e) {
+       e.preventDefault();
+       var text = $("#input").val();
+       $("#input").val(
+         text.replace(/[\w]+/gi, function(w) { return '<w lemma="">'+w+'</w>'; })
+       );
+    });
+   </script>
   </body>
 </html>
